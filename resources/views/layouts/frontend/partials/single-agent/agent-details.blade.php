@@ -1,5 +1,27 @@
 
 <!--/ Property Star /-->
+
+<!--/ Property Grid Star /-->
+<style>
+    /* .col {
+  height:100vh;
+} */
+    img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#image_id {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    /* height: calc(100vh - 400px); */
+}
+</style>
+
 <!--/ Agent Single Star /-->
 <section class="agent-single">
   <div class="container">

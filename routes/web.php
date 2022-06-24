@@ -84,6 +84,8 @@ Route::get('/', [PropertyController::class, 'frontendHome'])->name('welcome');
 Route::get('homepage-properties', [PropertyController::class, 'homePageProperty'])->name('property.homePageProperty');
 Route::get('property-details/{property}', [PropertyController::class, 'SingleProperty'])->name('property.view.property-detail');
 Route::get('all-property-Listing', [PropertyController::class, 'PropertyListing'])->name('property.view.all-property-listing');
+Route::get('filter-properties', [PropertyController::class, 'PropertyFilter'])->name('property.filter');
+Route::get('search-properties', [PropertyController::class, 'search'])->name('property.search');
 
 
 
@@ -114,8 +116,19 @@ Route::get('edit-surveyor/', [MbServiceController::class, 'edit'])->name('survey
 Route::put('update-about/{mbService}', [MbServiceController::class, 'update'])->name('surveyor.update');
 Route::delete('delete-about/{mbService}', [MbServiceController::class, 'destroy'])->name('surveyor.destroy');
 
+Route::get('add-contact', [ContactController::class, 'index'])->name('contact.index');
+Route::get('show-contact-request/{contact}', [ContactController::class, 'show'])->name('contact.show');
+Route::get('create-contact', [ContactController::class, 'create'])->name('contact.create');
+Route::get('show-contact/{contact}', [MbServiceController::class, 'show'])->name('contact.show');
+Route::post('store-contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('edit-contact/', [ContactController::class, 'edit'])->name('contact.edit');
+Route::put('update-about/{contact}', [ContactController::class, 'update'])->name('contact.update');
+Route::delete('delete-about/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy');
 
 
+
+
+//frontend Routes
 Route::get('single-agent-details/{agent}', [AgentController::class, 'singleAgent'])->name('agent.view.single-detail');
 Route::get('logout', [AgentController::class, 'logout'])->name('logout');
 Route::get('about', [AboutController::class, 'about'])->name('about');

@@ -12,12 +12,12 @@
         <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="/{{ app()->currentLocale() }}/">
+              <a href="{{ route('welcome') }}">
                 {{ __('Home') }}
               </a>
             </li>
             <li class="breadcrumb-item">
-              <a href="/{{ app()->currentLocale() }}/agents">
+              <a href="{{ route('agent.view-agent-list') }}">
                 {{ __('Agents') }}
               </a>
             </li>

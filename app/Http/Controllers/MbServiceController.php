@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Property;
 use App\Models\MbService;
 use Illuminate\Http\Request;
+use Symfony\Polyfill\Mbstring\Mbstring;
 use App\Http\Requests\StoreMbServiceRequest;
 use App\Http\Requests\UpdateMbServiceRequest;
-use Symfony\Polyfill\Mbstring\Mbstring;
 
 class MbServiceController extends Controller
 {
@@ -22,7 +23,9 @@ class MbServiceController extends Controller
     }
     public function surveyor()
     {
-        return view('surveyor');
+        $properties = Property::paginate(5);
+
+        return view('surveyor', compact('properties'));
     }
 
     /**
@@ -43,7 +46,7 @@ class MbServiceController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $mbservice = new MbService();
         $mbservice ->primary_contact = $request->primary_contact ;
         $mbservice ->company = $request->company ;

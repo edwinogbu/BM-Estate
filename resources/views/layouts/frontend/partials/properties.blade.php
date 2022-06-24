@@ -8,7 +8,7 @@
             <h2 class="title-a">{{ __('Latest Properties') }}</h2>
           </div>
           <div class="title-link">
-            <a href="/{{ app()->currentLocale() }}/properties">{{ __('All Property') }}
+            <a href="{{ route('property.view.all-property-listing')}}">{{ __('All Property') }}
               <span class="ion-ios-arrow-forward"></span>
             </a>
           </div>
@@ -20,13 +20,13 @@
       <div class="carousel-item-b">
         <div class="card-box-a card-shadow">
           <div class="img-box-a">
-            <img src="{{ asset('images/property_images/vertical_images/'.$property->vertical_image) }}" alt="" class="img-a img-fluid">
+            <img src="{{ Storage::url($property->vertical_image) }}" alt="" class="img-a img-fluid">
           </div>
           <div class="card-overlay">
             <div class="card-overlay-a-content">
               <div class="card-header-a">
                 <h2 class="card-title-a">
-                  <a href="/{{ app()->currentLocale() }}/property/{{ $property->id }}">
+                  <a href="{{ route('property.view.property-detail', $property->id) }}">
                     {{ $property->city }}
                     <br /> {{ $property->street_name }}</a>
                 </h2>
@@ -35,7 +35,7 @@
                 <div class="price-box d-flex">
                   <span class="price-a">rent | $ {{ $property->rent }}</span>
                 </div>
-                <a href="/{{ app()->currentLocale() }}/property/{{ $property->id }}" class="link-a">{{ __('Click here to view') }}
+                <a href="{{ route('property.view.property-detail', $property->id) }}" class="link-a">{{ __('Click here to view') }}
                   <span class="ion-ios-arrow-forward"></span>
                 </a>
               </div>

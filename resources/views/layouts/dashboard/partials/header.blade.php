@@ -268,6 +268,27 @@
                                     <li>
                                         <a href="#" aria-expanded="true">
                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                                            <span class="sidebar-nav-item">Contact</span>
+                                            <span class="fa arrow"></span>
+                                        </a>
+                                        <ul aria-expanded="false" class="collapse">
+                                            <li>
+                                                <a href="{{ route('contact.create') }}">
+                                                    Add MB Contact
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('contact.index') }}">
+                                                    manage MB Contact details
+                                                </a>
+                                            </li>
+
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" aria-expanded="true">
+                                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
                                             <span class="sidebar-nav-item">Testimonial</span>
                                             <span class="fa arrow"></span>
                                         </a>

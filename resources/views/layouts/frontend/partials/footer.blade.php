@@ -13,19 +13,23 @@
               </p>
             </div>
             <div class="w-footer-a">
-              {{-- @if(count($contact)) --}}
-              <ul class="list-unstyled">
-                <li class="color-a">
-                  <span class="color-text-a" style="color: #05083b;">{{ __('Email') }} .
-                </span>
-                {{-- {{ $contact[0]->email }} --}}
-            </li>
-                <li class="color-a">
-                  <span class="color-text-a" style="color: #05083b;">{{ __('Phone') }} .
-                {{-- </span> {{ $contact[0]->phone }} --}}
-            </li>
-              </ul>
-              {{-- @endif --}}
+                @forelse ($contact as $contact)
+                <ul class="list-unstyled">
+                  <li class="color-a">
+                      <span class="color-text-a" style="color: #05083b;">{{ __('Email') }} .
+                      </span>
+
+                      {{ $contact->email }}
+                  </li>
+                  <li class="color-a">
+                      <span class="color-text-a" style="color: #05083b;">{{ __('Phone') }} .
+                      </span> {{ $contact->phone }}
+                  </li>
+                </ul>
+
+                @empty
+                    Contact will be uploaded soon
+                @endforelse
             </div>
           </div>
         </div>
@@ -61,13 +65,18 @@
             </div>
             <div class="w-body-a">
               <ul class="list-unstyled">
-                {{-- @foreach($languages as $language) --}}
                 <li class="item-list-a">
                   <i class="fa fa-angle-right"></i>
-                  {{-- <a href="/{{ $language->iso }}"> --}}
-                    {{-- {{ strtoupper($language->iso) }}</a> --}}
+                  <a href="{{ route('surveyor') }}/agents">
+                    {{ __('Service Proposal') }}
+                  </a>
                 </li>
-                {{-- @endforeach --}}
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i>
+                  <a href="{{ route('contact') }}/agents">
+                    {{ __('Contact Us') }}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

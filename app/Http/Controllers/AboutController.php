@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Agent;
+use App\Models\Contact;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,6 +31,7 @@ class AboutController extends Controller
         $agents = Agent::paginate(3);
 
         $properties = Property::all();
+        $contact = Contact::all();
 
 
         $types = DB::table('properties')->select('type')->distinct()->get()->pluck('type')->sort();
@@ -47,7 +49,7 @@ class AboutController extends Controller
         if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
 
-    return view('about', compact('agents','about','agent','properties','cities','beds', 'baths', 'garages','types','searchProperty'));
+    return view('about', compact('agents','about','agent','properties','cities','beds', 'baths', 'garages','types','searchProperty','contact'));
 
     }
 

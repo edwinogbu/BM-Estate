@@ -44,117 +44,41 @@
             <!--panel-->
                 <div class="panel-body">
                     <div class="row inputWrapper">
-                        <form id="add-agent-form" data-parsley-validate="" novalidate=""
-                                method="POST"
-                                enctype="multipart/form-data"
-                                action="{{ route('about.store') }}">
-                                @csrf
-                                <div class="row inputWrapper ">
+                        <form class="form-a contactForm" action="{{ route('contact.store') }}" enctype="multipart/form-data" method="POST">
+                            @csrf
 
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">
-                                            <h6 class="modal-title">
-                                            {{ __('title name') }}
-                                            </h6>
-                                            </label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input value="" name="title" type="text" placeholder="title name" class="form-control">
-                                    </div>
+                            <div id="sendmessage">Your message has been sent. Thank you!</div>
+                            <div id="errormessage"></div>
+                            <div class="row">
+                              <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                  <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                  <div class="validation"></div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">
-                                            <h6 class="modal-title">
-                                            {{ __('subtitle name') }}
-                                            </h6>
-                                            </label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input value="" name="subtitle" type="text" placeholder="title name" class="form-control">
-                                    </div>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                  <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                                  <div class="validation"></div>
                                 </div>
-
-
+                              </div>
+                              <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                  <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                                  <div class="validation"></div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">
-                                            <h6 class="modal-title">
-                                            {{__('About')}}
-                                                </h6>
-                                    </label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <textarea name="text" type="text" class="form-control" cols="4" ></textarea>
-                                    </div>
+                              </div>
+                              <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                  <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                  <div class="validation"></div>
                                 </div>
-                                <div class="row inputWrapper ">
-                                <br>
-                                        <br>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">
-                                                <h6 class="modal-title">
-                                                    {{ __('Select Image File') }}
-                                                </h6>
-                                                </label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                            <div class="left-inner-addon ">
-                                                <i class="fa fa-file"></i>
-                                                <input type="file" name="team_image" class="form-control" placeholder="custom file">
-                                                <label class="custom-file-label" for="customFile">Select image (800x896)</label>
-
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">
-                                                <h6 class="modal-title">
-                                                    {{ __('Select horizontal_image File') }}
-                                                </h6>
-                                                </label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                            <div class="left-inner-addon ">
-                                                <i class="fa fa-file"></i>
-                                                <input type="file" name="horizontal_image" class="form-control" placeholder="custom horizontal_image file">
-                                                <label class="custom-file-label" for="customFile">Select image (1920 x 960)</label>
-
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">
-                                                <h6 class="modal-title">
-                                                    {{ __('Select vertical_image Image File') }}
-                                                </h6>
-                                                </label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                            <div class="left-inner-addon ">
-                                                <i class="fa fa-file"></i>
-                                                <input type="file" name="vertical_image" class="form-control" placeholder="custom vertical_image file">
-                                                <label class="custom-file-label" for="customFile">Select image (800x896)</label>
-
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <br>
-
-
-
-
+                              </div>
+                              <div class="col-md-12">
+                                <button type="submit" class="btn btn-a">{{ __('Send Message') }}</button>
+                              </div>
                             </div>
-                            <div class="modal-footer">
-                                <div class="registrationButtonPlaseholder text-center">
-                                    <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                        <button
-                                        type="submit"
-                                        class="btn btn-default btn-info pull-right btn-lg">
-                                        {{ __('Save') }}
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-info pull-left btn-lg" data-dismiss="modal">Close</button>
-                                    {{-- <button type="button" class="btn btn-default">Save changes</button> --}}
-                                    </div>
-                                </div>
-                                </div>
-                        </form>
+                          </form>
                     </div>
 
                 </div>

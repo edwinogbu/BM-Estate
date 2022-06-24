@@ -47,7 +47,7 @@
         <div class="card-box-d h-100" style="max-width: 400px; max-height: auto;">
           <div class="card-img-d h-100">
 
-         <img src="{{ Storage::url($agent->image) }}" class="img-responsive h-100" alt="agent picture" style="" id="image_id" >
+         <img src="{{ Storage::url($agent->image) }}" class="img-responsive h-100 img-fluid" alt="agent picture" style="" id="image_id" >
 
           </div>
           <div class="card-overlay card-overlay-hover">

@@ -7,9 +7,10 @@
           <h1 class="title-single" style="margin-top: 50px;">
             @foreach ($about as $about)
 
-            @if($about)
-            {{ $about->title }}
-            @endif
+                @if($about)
+                    {{ $about->title }}
+                @endif
+
             @endforeach
           </h1>
         </div>

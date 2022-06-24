@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\Amenity;
+use App\Models\Contact;
 use App\Models\Property;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
-use App\Models\Testimonial;
 
 class PropertyController extends Controller
 {
@@ -26,6 +27,30 @@ class PropertyController extends Controller
 
         return view('layouts.dashboard.backend.property.index', compact('agents', 'properties','agent', 'agents','amenities'));
     }
+
+    public function search(Request $request, Property $property)
+    {
+        $search =$request->get('search');
+
+        if ($search == 'active' ) {
+
+            $properties = DB::table('properties')->where('status', 'like', '%'. $search.'%')->paginate(3);
+        }
+        elseif ($search == 'sold' ) {
+
+            $properties = DB::table('properties')->where('status', 'like', '%'. $search.'%')->paginate(3);
+        }
+
+        else {
+            $properties = Property::simplePaginate(5);
+
+
+        }
+
+
+        return view('properties',compact('properties', 'search'));
+    }
+
 
     public function searchProperty(Request $request){
 
@@ -46,12 +71,14 @@ class PropertyController extends Controller
             return view('layouts.frontend.partials.form-search', compact('cities','beds', 'baths', 'garages','types','searchProperty'));
     }
 
-    public function frontendHome(Agent $agent, Request $request, Testimonial $testimonial)
+    public function frontendHome(Agent $agent, Request $request, Testimonial $testimonial, Contact $contact)
     {
         // dd('ok');
         $agents = Agent::all();
         $testimonials = Testimonial::all();
         $properties = Property::paginate(5);
+        $contact = Contact::all();
+
 
         $types = DB::table('properties')->select('type')->distinct()->get()->pluck('type')->sort();
             $cities = DB::table('properties')->select('city')->distinct()->get()->pluck('city')->sort();
@@ -68,12 +95,12 @@ class PropertyController extends Controller
             if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
 
-        return view('welcome', compact('agents','testimonials','testimonial', 'properties','agent','cities','beds', 'baths', 'garages','types','searchProperty'));
+        return view('welcome', compact('agents','testimonials','testimonial', 'properties','agent','cities','beds', 'baths', 'garages','types','searchProperty', 'contact'));
     }
 
-    public function SingleAgentProperty(Request $request, Agent $agent)
+    public function SingleAgentProperty(Request $request, Agent $agent, Property $property)
     {
-        // $contact    = $this->contactRepository->all();
+        $contact    = Contact::all();
         $agent      = Agent::all();
         $properties      = Property::all();
         $testimonials = Testimonial::all();
@@ -98,13 +125,14 @@ class PropertyController extends Controller
 
 
 
-        return view('single-agent',compact('agent', 'properties','filters'));
+        return view('single-agent',compact('agent', 'properties','filters', 'property'));
     }
 
     public function PropertyListing(Request $request, Agent $agent)
     {
 
         $properties      = Property::latest()->simplePaginate(6);
+        $contact = Contact::all();
 
         // $search =  $request->input('q');
         // if($search!=""){
@@ -125,7 +153,47 @@ class PropertyController extends Controller
 
 
 
-        return view('properties',compact('agent', 'properties'));
+    $property = Property::where( function($query) use($request){
+             return $request->status ? $query->from('properties')->where('status',$request->status) : '';
+             }) ->get();
+
+                $selected_status = [];
+                $selected_status['status'] = $request->status;
+
+                // dd($selected_status);
+
+        return view('properties',compact('agent', 'properties', 'selected_status', 'contact'));
+    }
+    public function PropertyFilter(Request $request)
+    {
+
+        $properties      = Property::latest()->simplePaginate(6);
+
+        $search =  $request->input('status');
+        if($search!=""){
+            $searchProperty = Property::where(function ($query) use ($search){
+                $query->where('status', 'like', '%'.$search.'%');
+            })
+            ->simplePaginate(3);
+            $searchProperty->appends(['status' => $search]);
+
+        }
+        else{
+            $searchProperty = Property::simplePaginate(3);
+        }
+
+
+
+    // $property = Property::where( function($query) use($request){
+    //          return $request->status ? $query->from('properties')->where('status',$request->status) : '';
+    //          }) ->get();
+
+    //             $selected_status = [];
+    //             $selected_status['status'] = $request->status;
+
+                // dd($selected_status);
+
+        return view('properties',compact('properties','searchProperty', 'search'));
     }
 
 

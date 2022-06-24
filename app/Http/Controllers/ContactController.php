@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Property;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 
@@ -21,7 +23,10 @@ class ContactController extends Controller
     }
     public function contact()
     {
-        return view('contact');
+        $properties = Property::paginate(5);
+        $contact = Contact::all();
+
+        return view('contact', compact('properties', 'contact'));
     }
 
     /**
@@ -31,7 +36,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.dashboard.backend.contact.create');
     }
 
     /**
@@ -40,11 +45,11 @@ class ContactController extends Controller
      * @param  \App\Http\Requests\StoreContactRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreContactRequest $request)
+    public function store(Request $request)
     {
         $contact = Contact::create($request->all());
 
-        return back()->with('success', 'contact sent successfully');
+        return redirect('contact.index')->with('success', 'contact sent successfully');
     }
 
     /**
@@ -66,7 +71,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('layouts.dashboard.backend.contact.edit', compact('contact'));
     }
 
     /**
@@ -78,7 +83,9 @@ class ContactController extends Controller
      */
     public function update(UpdateContactRequest $request, Contact $contact)
     {
-        //
+        $contact->update($request->all());
+
+        return redirect()->back();
     }
 
     /**

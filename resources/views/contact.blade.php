@@ -3,6 +3,8 @@
 @section('content')
 
   {{-- @include('layouts.frontend.partials.form-search') --}}
+  @include('layouts.frontend.partials.home.carousel')
+
   @include('layouts.frontend.partials.contact.intro')
   @include('layouts.frontend.partials.contact.info')
 
