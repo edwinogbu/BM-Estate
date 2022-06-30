@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
+use App\Models\Service;
 
 class AboutController extends Controller
 {
@@ -27,11 +28,12 @@ class AboutController extends Controller
 
     public function about(About $about, Request $request, Agent $agent)
     {
-        $about = About::all();
+        $about = About::latest()->get();
         $agents = Agent::paginate(3);
 
         $properties = Property::all();
         $contact = Contact::all();
+        $services = Service::all();
 
 
         $types = DB::table('properties')->select('type')->distinct()->get()->pluck('type')->sort();
@@ -49,7 +51,7 @@ class AboutController extends Controller
         if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
 
-    return view('about', compact('agents','about','agent','properties','cities','beds', 'baths', 'garages','types','searchProperty','contact'));
+    return view('about', compact('agents','about','agent','properties','cities','beds', 'baths', 'garages','types','searchProperty','contact','services'));
 
     }
 
@@ -73,16 +75,16 @@ class AboutController extends Controller
     {
         // dd($request->all());
         $path1 = $request->file('team_image')->store('public/about-image/team_image');
-        $path2 = $request->file('horizontal_image')->store('public/about-image/horizontal_image');
-        $path3 = $request->file('horizontal_image')->store('public/about-image/horizontal_image');
+        $path2 = $request->file('company_image')->store('public/about-image/company_image');
+        // $path3 = $request->file('horizontal_image')->store('public/about-image/horizontal_image');
 
         $about = new About();
         $about->title = $request->title ;
         $about->subtitle = $request->subtitle ;
         $about->text = $request->text ;
         $about->team_image = $path1;
-        $about->horizontal_image = $path2;
-        $about->vertical_image = $path3;
+        $about->company_image = $path2;
+        // $about->vertical_image = $path3;
         $about->save();
 
         return back();

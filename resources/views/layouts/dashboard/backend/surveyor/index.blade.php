@@ -55,7 +55,7 @@
                                                 <th>{{ __('phone') }}</th>
                                                 <th>{{ __('city') }}</th>
                                                 <th>{{ __('property_type') }}</th>
-                                                <th class="pull-right">Action</th>
+                                                <th class="" width="20%">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -71,16 +71,16 @@
                                                 <td>{{ $mbservice->city }}</td>
                                                 <td>{{ $mbservice->property_type }}</td>
                                                 <td>
-                                                    @foreach ($mbservices as $mbservice)
+                                                    {{-- @foreach ($mbservices as $mbservice)
                                                     @foreach ($mbservice->service_required as $service)
                                                     <b>{{ $service['key'] }}</b>: {{ $service['value'] }}<br />
                                                     @endforeach
 
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </td>
 
 
-                                                <td class="pull-right">
+                                                <td class="">
                                                     <div class="butto-group">
                                                         <form action="{{ route('surveyor.destroy', $mbservice->id) }}">
                                                             <a href="{{ route('surveyor.show', $mbservice->id) }}" type="button" class="btn btn-sm btn-info">show</a>

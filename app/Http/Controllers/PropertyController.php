@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agent;
 use App\Models\Amenity;
 use App\Models\Contact;
+use App\Models\Service;
 use App\Models\Property;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class PropertyController extends Controller
     {
         $agents =Agent::all();
         $amenities = Amenity::all();
-        $properties = Property::paginate(5);
+        $properties = Property::all();
+        // $properties = Property::latest()->with(['agent'])->paginate(3);
 
         return view('layouts.dashboard.backend.property.index', compact('agents', 'properties','agent', 'agents','amenities'));
     }
@@ -71,14 +73,18 @@ class PropertyController extends Controller
             return view('layouts.frontend.partials.form-search', compact('cities','beds', 'baths', 'garages','types','searchProperty'));
     }
 
-    public function frontendHome(Agent $agent, Request $request, Testimonial $testimonial, Contact $contact)
+    public function frontendHome(Agent $agent, Request $request, Testimonial $testimonial, Contact $contact, Service $service)
     {
         // dd('ok');
-        $agents = Agent::all();
+        $agents = Agent::paginate(3);
         $testimonials = Testimonial::all();
-        $properties = Property::paginate(5);
+        $properties = Property::latest()->with(['agent'])->paginate(3);
         $contact = Contact::all();
+        $services = Service::all();
+        $featuredServices = Service::where('title', 'Accommodation Solution')->orWhere('title', 'Land Acquisition, Perfection of Title and Asset Disposal')->get();
 
+
+// dd($featuredServices);
 
         $types = DB::table('properties')->select('type')->distinct()->get()->pluck('type')->sort();
             $cities = DB::table('properties')->select('city')->distinct()->get()->pluck('city')->sort();
@@ -95,7 +101,7 @@ class PropertyController extends Controller
             if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
 
-        return view('welcome', compact('agents','testimonials','testimonial', 'properties','agent','cities','beds', 'baths', 'garages','types','searchProperty', 'contact'));
+        return view('welcome', compact('services','service','agents','testimonials','testimonial', 'properties','agent','cities','beds', 'baths', 'garages','types','searchProperty', 'contact', 'featuredServices'));
     }
 
     public function SingleAgentProperty(Request $request, Agent $agent, Property $property)
@@ -104,6 +110,8 @@ class PropertyController extends Controller
         $agent      = Agent::all();
         $properties      = Property::all();
         $testimonials = Testimonial::all();
+        $services = Service::all();
+
 
 
         $search =  $request->input('q');
@@ -125,7 +133,7 @@ class PropertyController extends Controller
 
 
 
-        return view('single-agent',compact('agent', 'properties','filters', 'property'));
+        return view('single-agent',compact('agent', 'properties','filters', 'property','services'));
     }
 
     public function PropertyListing(Request $request, Agent $agent)
@@ -133,6 +141,9 @@ class PropertyController extends Controller
 
         $properties      = Property::latest()->simplePaginate(6);
         $contact = Contact::all();
+        $services = Service::all();
+
+
 
         // $search =  $request->input('q');
         // if($search!=""){
@@ -162,12 +173,15 @@ class PropertyController extends Controller
 
                 // dd($selected_status);
 
-        return view('properties',compact('agent', 'properties', 'selected_status', 'contact'));
+        return view('properties',compact('agent', 'properties', 'selected_status', 'contact','services'));
     }
+
+
     public function PropertyFilter(Request $request)
     {
 
         $properties      = Property::latest()->simplePaginate(6);
+        $services = Service::all();
 
         $search =  $request->input('status');
         if($search!=""){
@@ -193,7 +207,7 @@ class PropertyController extends Controller
 
                 // dd($selected_status);
 
-        return view('properties',compact('properties','searchProperty', 'search'));
+        return view('properties',compact('properties','searchProperty', 'search','services'));
     }
 
 
@@ -233,6 +247,7 @@ class PropertyController extends Controller
         // $contact    = $this->contactRepository->all();
         $agents      = Agent::all();
         $testimonials = Testimonial::all();
+        $services = Service::all();
 
         $id =Property::find($property->id);
         $properties = Property::where('id', $id)->get();
@@ -253,7 +268,7 @@ class PropertyController extends Controller
             if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
 
-        return view('single-property', compact('agents','properties','cities','beds', 'baths', 'garages','types','searchProperty','property'));
+        return view('single-property', compact('agents','properties','cities','beds', 'baths', 'garages','types','searchProperty','property','services'));
     }
 
     /**
@@ -316,7 +331,7 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        //
+        return view('layouts.dashboard.backend.services.show', compact('property'));
     }
 
     /**
@@ -327,7 +342,11 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
-        //
+        $property = Property::findOrFail($property->id);
+        $properties = Property::all();
+
+
+        return view('layouts.dashboard.backend.property.edit', compact('property','properties'));
     }
 
     /**
@@ -337,11 +356,13 @@ class PropertyController extends Controller
      * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePropertyRequest $request, Property $property)
+    public function update(Request $request, Property $property)
     {
-        //
+
+        $property = Property::findOrFail($property->id);
 
         $property->update($request->all());
+
         return back();
     }
 
@@ -353,6 +374,9 @@ class PropertyController extends Controller
      */
     public function destroy(Property $property)
     {
-        //
+        $property = Property::findOrFail($property->id);
+        $property->delete();
+
+        return back()->route('welcome')->with('success', 'successfully deleted');
     }
 }

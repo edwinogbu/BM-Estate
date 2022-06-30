@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Symfony\Polyfill\Mbstring\Mbstring;
 use App\Http\Requests\StoreMbServiceRequest;
 use App\Http\Requests\UpdateMbServiceRequest;
+use App\Models\Service;
 
 class MbServiceController extends Controller
 {
@@ -24,8 +25,9 @@ class MbServiceController extends Controller
     public function surveyor()
     {
         $properties = Property::paginate(5);
+        $services = Service::all();
 
-        return view('surveyor', compact('properties'));
+        return view('surveyor', compact('properties','services'));
     }
 
     /**

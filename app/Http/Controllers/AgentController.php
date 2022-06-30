@@ -64,7 +64,7 @@ class AgentController extends Controller
         $agent->image = $path;
         $agent->save();
 
-        return back()->with('successMessage', 'Saved successfully');
+        return redirect()->route('agent.index')->with('successMessage', 'Saved successfully');
         // return redirect('/home/agents')->with('successMessage', 'Saved successfully');
     }
 

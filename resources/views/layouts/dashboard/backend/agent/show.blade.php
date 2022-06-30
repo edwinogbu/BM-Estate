@@ -72,14 +72,12 @@
                                     <input value="{{ $agent->email }}" type="email" name="email" placeholder="Email" class="form-control">
                                 </div>
                             </div>
-                            @foreach($languages as $language)
                             <div class="form-group row">
-                                <label class="col-12 col-sm-3 col-form-label text-sm-right">{{__('About')}} ({{ strtoupper($language->iso) }})</label>
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right">{{__('About')}}</label>
                                 <div class="col-12 col-sm-8 col-lg-6">
-                                    <textarea name="{{$language->iso}}-description" class="form-control">{{ $agent->translate($language->iso)->about }}</textarea>
+                                    <textarea name="description" class="form-control">{{ $agent->about }}</textarea>
                                 </div>
                             </div>
-                            @endforeach
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label text-sm-right">{{ __('Properties') }}</label>
                                 <div class="col-sm-6">
@@ -103,7 +101,7 @@
                                     <button
                                         type="button"
                                         class="btn btn-space btn-primary"
-                                        data-toggle="modal" data-target="#updateModal">
+                                        data-toggle="modal" data-target="#updateModal" >
                                         {{ __('Update') }}
                                     </button>
                                     <button
@@ -113,8 +111,8 @@
                                         {{ __('Delete agent') }}
                                     </button>
 
-                                    @include('adminpanel.components.single-agent.update-pop-up')
-                                    @include('adminpanel.components.single-agent.delete-pop-up')
+                                    {{-- @include('adminpanel.components.single-agent.update-pop-up') --}}
+                                    {{-- @include('adminpanel.components.single-agent.delete-pop-up') --}}
 
                                 </div>
                             </div>

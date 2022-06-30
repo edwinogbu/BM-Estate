@@ -4,10 +4,10 @@
     <div class="row">
         @foreach ($about as $about)
 
-      @if($about && $about->horizontal_image)
+      @if($about && $about->company_image)
       <div class="col-sm-12">
         <div class="about-img-box">
-          <img src="{{ Storage::url($about->horizontal_image  ) }}" class="img-fluid card-img-top" alt="agent picture" style="max-width:1920px; max-height:960px; ">
+          <img src="{{ Storage::url($about->company_image  ) }}" class="img-fluid card-img-top" alt="agent picture" style="max-width:1920px; max-height:960px; ">
 
         </div>
         <div class="sinse-box" >
@@ -20,9 +20,9 @@
       @endif
       <div class="col-md-12 section-t8">
         <div class="row">
-          @if($about && $about->vertical_image)
+          @if($about && $about->team_image)
           <div class="col-md-6 col-lg-5">
-            <img src="{{ Storage::url($about->vertical_image ) }}" class="img-fluid card-img-top" alt="agent picture" style="max-width:600px; max-height:800px; ">
+            <img src="{{ Storage::url($about->team_image ) }}" class="img-fluid card-img-top" alt="agent picture" style="max-width:600px; max-height:800px; ">
 
           </div>
           @endif

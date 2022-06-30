@@ -4,8 +4,8 @@
 
         /* background:#ffffff; */
         transition: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-        padding: 0.625rem 0;
-            font-size: 1rem;
+        /* padding: 0.625rem 0; */
+            /* font-size: 1rem;
             letter-spacing: 0.062rem;
             margin-bottom: 0.875rem;
             border: 5px solid #050;
@@ -13,19 +13,20 @@
             outline: inherit;
             border-radius: 15px 15px 5px 5px;
             padding:0px;
-            margin: 0px;
+            margin: 0px; */
             color:#05083a;
     }
 
 </style>
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="margin: 0px;
+padding:0%; padding-top: 0%; margin-top: 0%
 
-background-image: url('dashboardcss/img/survey1.jpg');
+/* background-image: url('dashboardcss/img/survey1.jpg'); */
 
-			background-repeat:no-repeat;
-            background-size:fill;
-            background: transparent;
-            width: 100%;
+			/* background-repeat:no-repeat;
+            background-size:fill; */
+            /* background: transparent; */
+            /* width: 100%;
             padding: 0.625rem 0;
             font-size: 1rem;
             color: #fff;
@@ -33,7 +34,7 @@ background-image: url('dashboardcss/img/survey1.jpg');
             margin-bottom: 1.875rem;
             border: none;
             border-bottom: 0.085rem solid #fff;
-            outline: none;
+            outline: none; */
 
 ">
     <div class="container">
@@ -44,18 +45,18 @@ background-image: url('dashboardcss/img/survey1.jpg');
         <span></span>
       </button>
 
-      <img src="{{ asset('dashboardcss/img/bm consult logo4.jpg') }}" alt="" style="width: 200px; height: ;auto; background:tranparent; ">
+      <img src="{{ asset('dashboardcss/img/bm consult logo4.jpg') }}" alt="" style="width: 100px; height:auto; margin: 10px; padding: 0%;">
 
       {{-- <img src="{{ asset('dashboardcss/img/bm consult logo4.jpg') }}" alt="" style="width: 200px; height: ;10px; background:tranparent;"> --}}
       <a class="navbar-brand text-brand" href="/" style="color: #05083b;">
-       <span class="color-b">B</span>AYOR
+       {{-- <span class="color-b">B</span>AYOR
         <span class="color-b">
             MO<span style="color: #fff;">DE<span style="color: #05083a;">YIN
         </span>
         </span>
         </span>
         <br>
-        <span class="color-b"> CONSULTING</span>
+        <span class="color-b"> CONSULTING</span> --}}
     </a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
         data-target="#navbarTogglerDemo01" aria-expanded="false">
@@ -66,46 +67,53 @@ background-image: url('dashboardcss/img/survey1.jpg');
           <li class="nav-item">
             <a style="
                 color: #05083b;
-                color: #ffffff;
                 "
               class="nav-link @if(Request::segment(2) == '') active @endif"
               href="/">
               {{ __('Home') }}
             </a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle color-b" href="{{ route('contact') }}" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <span class="" style="color:#05083b ">
+                  {{ __(' Our Services ') }}
+              </span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('services') }}" style=" color: #05083b; ">Service</a>
+                  <a class="dropdown-item" href="{{ route('surveyor') }}" style=" color: #05083b; ">Surveyors Quick Responses</a>
+             </div>
+        </li>
+
           <li class="nav-item">
-            <a style=" color: #ffffff;"
+            <a style=" color: #05083a;"
               class="nav-link @if(Request::segment(2) == 'about') active @endif"
               href="{{ route('about') }}">
               {{ __('About') }}
             </a>
           </li>
+
           <li class="nav-item">
-            <a style=" color: #ffffff; "
+            <a style=" color: #05083a;"
+              class="nav-link @if(Request::segment(2) == 'about') active @endif"
+              href="{{ route('contact') }}">
+              {{ __('Contact') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a style=" color: #05083a; "
               class="nav-link @if(Request::segment(2) == 'properties') active @endif"
               href="{{ route('property.view.all-property-listing') }}">
               {{ __('Property') }}
             </a>
           </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle color-b" href="{{ route('surveyor') }}" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <span class="color-b">
-                  {{ __(' Surveying ') }}
-              </span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-               {{-- @foreach ($languages as $language) --}}
-                  <a class="dropdown-item" href="{{ route('surveyor') }}" style=" color: #05083b; ">Request Services</a>
-                  <a class="dropdown-item" href="{{ route('contact') }}" style=" color: #05083b; ">Contact Us</a>
-               {{-- @endforeach --}}
-             </div>
-            </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style=" color: #050; ">
-                <span class="color-b">
+              aria-haspopup="true" aria-expanded="false" style=" color: #05083b; ">
+                <span class="" style="color: 05083b;">
                   {{ __(' Account ') }}
                 </span>
 

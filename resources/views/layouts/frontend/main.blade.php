@@ -24,6 +24,18 @@
   <!-- Main Stylesheet File -->
   <link href="{{ asset('frontend/css/style.css')}}" rel="stylesheet">
 
+
+   <!-- Vendor CSS Files -->
+   <link href="{{ asset('serviceCss/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+   <link href="{{ asset('serviceCss/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+   <link href="{{ asset('serviceCss/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+   <link href="{{ asset('serviceCss/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+   <link href="{{ asset('serviceCss/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+   <link href="{{ asset('serviceCss/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+   <!-- Template Main CSS File -->
+   <link href="{{ asset('serviceCss/assets/css/style.css')}}" rel="stylesheet">
+
 </head>
 <body>
 

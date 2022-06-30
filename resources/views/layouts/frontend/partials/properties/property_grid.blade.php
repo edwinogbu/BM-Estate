@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                @if($properties->count() == 1)
+                {{-- @if($properties->count() == 1)
 
                 @if ($search == 'sold')
                 <h4>SOLD PROPERTIES</h4>
@@ -38,7 +38,7 @@
 
 
 
-                @endif
+                @endif --}}
         <div class="grid-option">
 
 
@@ -56,16 +56,16 @@
           <form action="{{ route('property.search') }}" method="GET" style="margin-top: 20px;">
             <div class="row">
 
+                <div class="form-group px-0">
             <span class="input-group-btn">
                 <a href="{{ route('property.view.all-property-listing') }}" class=" mt-1">
-                <button type="button" title="Refresh page"  class="btn btn-lg btn-danger" style="background-color: navy;">
+                <button type="button" title="Refresh page"  class="btn btn-sm btn-danger" style="background-color: navy;">
                     <span class="fas fa-sync-alt" style="color: #fffff1">Refresh</span>
                 </button>
             </a>
             </span>
             {{-- <div class="col-sm-3"> --}}
-                <div class="form-group px-0">
-                <select name="search" class="selectpicker form-control" data-style="btn-info"  style="width:200px; height: 50px;; color:navy;">
+                <select name="search" class="selectpicker form-control" data-style="btn-info"  style="width:200px; height:; color:navy;">
                 <optgroup label="Property select box">
                 <option value="0">Select..</option>
                 {{-- <option value="all">All</option> --}}
@@ -77,16 +77,16 @@
                 </optgroup>
             </select>
         {{-- </div> --}}
+
+        {{-- <input type="submit" class="btn btn-danger btn-lg" value="Filter"> --}}
+        <span class="input-group-btn">
+            <button type="submit" id="search-btn" class="btn btn-sm btn-danger" style="background-color: green;" title="Search Member">
+                {{-- <i class="fa fa-user" style="color: #ffffff;" title="Search Member"></i> --}}
+                <span class="fas fa-users" style="color: #fffff1" title="Search Members of MGM">Search property</span>
+
+            </button>
+        </span>
     </div>
-
-            {{-- <input type="submit" class="btn btn-danger btn-lg" value="Filter"> --}}
-            <span class="input-group-btn">
-                <button type="submit" id="search-btn" class="btn btn-lg btn-danger" style="background-color: green;" title="Search Member">
-                    {{-- <i class="fa fa-user" style="color: #ffffff;" title="Search Member"></i> --}}
-                    <span class="fas fa-users" style="color: #fffff1" title="Search Members of MGM">Search property</span>
-
-                </button>
-            </span>
 
   </div>
             </form>

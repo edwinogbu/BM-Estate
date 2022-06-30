@@ -50,7 +50,8 @@
                                                 <th>{{ __('Title Name') }}</th>
                                                 <th>{{ __('Subtitle') }}</th>
                                                 <th>{{ __('About ') }}</th>
-                                                <th>{{ __('Picture') }}</th>
+                                                <th>{{ __('Team Picture') }}</th>
+                                                <th>{{ __('Company Image') }}</th>
                                                 <th class="pull-right">Action</th>
                                             </tr>
                                         </thead>
@@ -62,13 +63,17 @@
                                                 <td>{{ $about->subtitle }}</td>
                                                 <td>{{ $about->text }}</td>
                                                 <td>
-                                                    <img src="{{ $about->team_image }}" alt="team image" style="width: 100px; height: ;50px; border-radius:100%;">
+                                                    <img src="{{ Storage::url($about->team_image) }}" alt="team image" style="width: 100px; height: ;50px; border-radius:100%;">
+
+                                                </td>
+                                                <td>
+                                                    <img src="{{ Storage::url($about->company_image) }}" alt="team image" style="width: 100px; height: ;50px; border-radius:100%;">
 
                                                 </td>
                                                 <td>
 
                                                     <form action="{{ route('about.destroy', $about->id) }}">
-                                                        <a href="{{ route('about.edit', $about->id) }}" type="button" class="btn btn-sm btn-primary"></a>
+                                                        <a href="{{ route('about.edit', $about->id) }}" type="button" class="btn btn-sm btn-primary">Edit</a>
                                                         <button type="submit" class="btn btn-sm btn-primary" >Delete</button>
                                                     </form>
                                                 </td>

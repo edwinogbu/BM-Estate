@@ -25,9 +25,7 @@ use App\Http\Controllers\DeletePropertyController;
 use App\Http\Controllers\UpdatePropertyController;
 use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\DashboardPropertyController;
-
-
-
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +76,10 @@ Route::get('all-agents-list', [AgentController::class, 'allAgent'])->name('agent
 
 Route::get('property-dashboard', [PropertyController::class, 'index'])->name('property.index');
 Route::get('create-property', [PropertyController::class, 'create'])->name('property.create');
+Route::get('edit-property/{property}', [PropertyController::class, 'edit'])->name('property.edit');
 Route::post('store-property', [PropertyController::class, 'store'])->name('property.store');
+Route::put('update-property/{property}', [PropertyController::class, 'update'])->name('property.update');
+Route::delete('delete-property/{property}', [PropertyController::class, 'destroy'])->name('property.destroy');
 
 Route::get('/', [PropertyController::class, 'frontendHome'])->name('welcome');
 Route::get('homepage-properties', [PropertyController::class, 'homePageProperty'])->name('property.homePageProperty');
@@ -96,6 +97,17 @@ Route::post('store-about', [AboutController::class, 'store'])->name('about.store
 Route::get('edit-about/', [AboutController::class, 'edit'])->name('about.edit');
 Route::put('update-about/{about}', [AboutController::class, 'update'])->name('about.update');
 Route::delete('delete-about/{about}', [AboutController::class, 'destroy'])->name('about.destroy');
+
+
+
+
+Route::get('add-service', [ServiceController::class, 'index'])->name('services.index');
+Route::get('create-service', [ServiceController::class, 'create'])->name('services.create');
+Route::get('show-service/{service}', [ServiceController::class, 'show'])->name('services.show');
+Route::post('store-service', [ServiceController::class, 'store'])->name('services.store');
+Route::get('edit-service/{service}', [ServiceController::class, 'edit'])->name('services.edit');
+Route::put('update-service/{service}', [ServiceController::class, 'update'])->name('services.update');
+Route::delete('delete-service/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
 
 Route::get('add-testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
@@ -137,6 +149,8 @@ Route::post('surveyor-form', [MbServiceController::class, 'form'])->name('survey
 Route::get('contact', [ContactController::class, 'contact'])->name('contact');
 // Route::get('mb-customers-testimonial', [TestimonialController::class, 'testimonial'])->name('testimonial');
 
+Route::get('show-service/{service}', [ServiceController::class, 'serviceDetail'])->name('service.show');
+Route::get('service-listing', [ServiceController::class, 'services'])->name('services');
 
 // Route::get('create-property', [PropertyController::class, 'create'])->name('property.create');
 // Route::post('store-property', [PropertyController::class, 'store'])->name('property.store');

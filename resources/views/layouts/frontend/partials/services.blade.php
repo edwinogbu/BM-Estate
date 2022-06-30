@@ -18,7 +18,7 @@
               <span class="fa fa-user"></span>
             </div>
             <div class="card-title-c align-self-center">
-              <h2 class="title-c">{{ __('Tenants') }}</h2>
+              <h2 class="title-c">{{ __('Valuation') }}</h2>
             </div>
           </div>
           <div class="card-body-c">
@@ -35,7 +35,7 @@
               <span class="fa fa-usd"></span>
             </div>
             <div class="card-title-c align-self-center">
-              <h2 class="title-c">{{ __('Rentals') }}</h2>
+              <h2 class="title-c">{{ __('Property Management') }}</h2>
             </div>
           </div>
           <div class="card-body-c">
@@ -52,7 +52,58 @@
               <span class="fa fa-home"></span>
             </div>
             <div class="card-title-c align-self-center">
-              <h2 class="title-c">{{ __('Sell') }}</h2>
+              <h2 class="title-c">{{ __('Real Estate Investment Appraisal and Analysis') }}</h2>
+            </div>
+          </div>
+          <div class="card-body-c">
+            <p class="content-c">
+              {{ __("Our clients can trust us because of our integrity, experience and skills, which reduces challenges and uncertanties during the sale or purchase of a flat, house or office.") }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-box-c foo">
+          <div class="card-header-c d-flex">
+            <div class="card-box-ico">
+              <span class="fa fa-home"></span>
+            </div>
+            <div class="card-title-c align-self-center">
+              <h2 class="title-c">{{ __('Real Estate Advisory and Consultancy') }}</h2>
+            </div>
+          </div>
+          <div class="card-body-c">
+            <p class="content-c">
+              {{ __("Our clients can trust us because of our integrity, experience and skills, which reduces challenges and uncertanties during the sale or purchase of a flat, house or office.") }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-box-c foo">
+          <div class="card-header-c d-flex">
+            <div class="card-box-ico">
+              <span class="fa fa-home"></span>
+            </div>
+            <div class="card-title-c align-self-center">
+              <h2 class="title-c">{{ __('Land Acquisition, Perfection of Title and Asset Disposal') }}</h2>
+            </div>
+          </div>
+          <div class="card-body-c">
+            <p class="content-c">
+              {{ __("Our clients can trust us because of our integrity, experience and skills, which reduces challenges and uncertanties during the sale or purchase of a flat, house or office.") }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card-box-c foo">
+          <div class="card-header-c d-flex">
+            <div class="card-box-ico">
+              <span class="fa fa-home"></span>
+            </div>
+            <div class="card-title-c align-self-center">
+              <h2 class="title-c">{{ __('Accommodation Solution') }}</h2>
             </div>
           </div>
           <div class="card-body-c">

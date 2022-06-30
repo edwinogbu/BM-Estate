@@ -1,5 +1,22 @@
 <!--/ Nav Star /-->
-<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="margin: 0px;
+
+background-image: url('dashboardcss/img/survey1.jpg');
+
+			background-repeat:no-repeat;
+            background-size:fill;
+            background: transparent;
+            width: 100%;
+            padding: 0.625rem 0;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: 0.062rem;
+            margin-bottom: 1.875rem;
+            border: none;
+            border-bottom: 0.085rem solid #fff;
+            outline: none;
+
+">
     <div class="container">
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +25,7 @@
         <span></span>
       </button>
       <img src="{{ asset('dashboardcss/img/bm consult logo4.jpg') }}" alt="" style="width: 100px; height: ;40px;">
-      <a class="navbar-brand text-brand" href="/" style="color: #05083b;">
+      <a class="navbar-brand text-brand" href="{{ route('welcome') }}" style="color: #05083b;">
         B.M CHARTERED ESTATE AND VALUERS
         <span class="color-b"> CONSULTING</span>
     </a>
@@ -42,7 +59,7 @@
           {{-- @if (Route::has('login')) --}}
           {{-- @auth --}}
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
               @if (Route::has('register'))
             <a style="color: #05083b;"
             class="nav-link nav-link @if(Request::segment(2) == 'register') active @endif"
@@ -59,7 +76,7 @@
               {{ __('Login') }}
             </a>
             @endif
-          </li>
+          </li> --}}
 
           {{-- @endauth --}}
           {{-- @endif --}}

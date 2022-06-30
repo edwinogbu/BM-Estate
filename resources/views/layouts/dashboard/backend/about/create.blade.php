@@ -112,14 +112,14 @@
                                             <div class="col-12 col-sm-8 col-lg-6">
                                             <div class="left-inner-addon ">
                                                 <i class="fa fa-file"></i>
-                                                <input type="file" name="horizontal_image" class="form-control" placeholder="custom horizontal_image file">
+                                                <input type="file" name="company_image" class="form-control" placeholder="custom horizontal_image file">
                                                 <label class="custom-file-label" for="customFile">Select image (1920 x 960)</label>
 
                                             </div>
                                         </div>
                                         <br>
                                         <br>
-                                        <div class="form-group row">
+                                        {{-- <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">
                                                 <h6 class="modal-title">
                                                     {{ __('Select vertical_image Image File') }}
@@ -132,7 +132,7 @@
                                                 <label class="custom-file-label" for="customFile">Select image (800x896)</label>
 
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <br>
                                         <br>
                                         <br>

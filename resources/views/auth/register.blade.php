@@ -10,11 +10,11 @@
 
 <style>
     body{
-        background-image: url('dashboardcss/img/survey1.jpg');
-			background-repeat:no-repeat;
+        /* background-image: url('dashboardcss/img/survey1.jpg'); */
+			/* background-repeat:no-repeat;
             background-size:cover;
             height: 100%;
-            overflow: hidden;
+            overflow: hidden; */
 
         padding-top: 15%;
         margin: 10%;
@@ -24,13 +24,13 @@
       max-width: 100%;
       object-fit: cover;
 
-      background-position: center center;
+      /* background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: #464646;
+    background-color: #464646; */
     /* Font Colour */
-    color:white;
+    /* color:white; */
     }
 </style>
 
@@ -61,36 +61,36 @@
         <div class=" flex flex-col sm:justify-center items-center pt-6 sm:pt-5 bg-gray-100"  id="image_id" style="color: #05083b;
 
 /* background-image: url('dashboardcss/img/bm consult logo.jpg'); */
-background-image: url('dashboardcss/img/survey2.jpg');
-			background-repeat:no-repeat;
+/* background-image: url('dashboardcss/img/survey2.jpg'); */
+			/* background-repeat:no-repeat;
             background-size:cover;
             margin:100px;
-            margin-top: 50px;
-            width:1080px;
-            object-fit: cover;
+            margin-top: 50px; */
+            /* width:1080px; */
+            /* object-fit: cover;
             max-width: 100%;
-            height: auto;
+            height: auto; */
         ">
 
             <div class="row " style="margin: 40px; padding:10px;">
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg pull-right" style="margin-left: 20px; margin: 20px;
 
 
-background-image: url('dashboardcss/img/survey.jpg');
-			background-repeat:no-repeat;
-            background-size:cover;
+/* background-image: url('dashboardcss/img/survey2.jpg'); */
+			/* background-repeat:no-repeat;
+            background-size:cover; */
             /* margin:100px; */
             /* width:1080px; */
             object-fit: cover;
-            max-width: 100%;
-            height: auto;
+            /* max-width: 100%; */
+            /* height: auto; */
             ">
                  <!-- Validation Errors -->
                  {{-- <form method="POST" action="{{ route('register') }}">
                     @csrf
 
                     <div class="form-group row">
-                        <label for="first_name" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 2rem;">{{ __(' Name') }}</label>
+                        <label for="first_name" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 1rem;">{{ __(' Name') }}</label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('first_name') }}" required autocomplete="name" autofocus>
@@ -106,7 +106,7 @@ background-image: url('dashboardcss/img/survey.jpg');
 
 
                     <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 2rem;">{{ __('E-Mail Address') }}</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 1rem;">{{ __('E-Mail Address') }}</label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -122,7 +122,7 @@ background-image: url('dashboardcss/img/survey.jpg');
 
 
                     <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 2rem;">{{ __('Password') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 1rem;">{{ __('Password') }}</label>
 
                         <div class="col-md-6">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -136,7 +136,7 @@ background-image: url('dashboardcss/img/survey.jpg');
                     </div>
 
                     <div class="form-group row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 2rem;">{{ __('Confirm Password') }}</label>
+                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right" style="color: #fff; font-weight: 900; font-size: 1rem;">{{ __('Confirm Password') }}</label>
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -154,13 +154,13 @@ background-image: url('dashboardcss/img/survey.jpg');
 
                 @if ($errors->any())
                 <div class="error">
-                    <div class="font-medium text-red-600" style="font-size: 2rem; font-weight: 600;">
+                    <div class="font-medium text-red-600" style="font-size: 1rem; font-weight: 600;">
                         {{ __('Whoops! Something went wrong.') }}
                     </div>
 
                     <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                         @foreach ($errors->all() as $error)
-                            <li style="font-weight: 900; font-size: 2rem;">{{ $error }}</li>
+                            <li style="font-weight: 900; font-size: 1rem;">{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -169,7 +169,7 @@ background-image: url('dashboardcss/img/survey.jpg');
                     @csrf
                     <!-- Name -->
                     <div>
-                        <label class="block font-medium text-sm text-gray-700" for="name" style="color: #fff; font-weight: 900; font-size: 2rem;">
+                        <label class="block font-medium text-sm text-gray-700" for="name" style="color: #05083b; font-weight: 900; font-size: 1rem;">
                             Name
                         </label>
 
@@ -184,7 +184,7 @@ background-image: url('dashboardcss/img/survey.jpg');
                     <!-- Email Address -->
                     <!--color:05083b-->
                     <div class="mt-4">
-                        <label class="block font-medium text-sm text-gray-700" for="email" style="color: #ffffff; font-weight: 900; font-size: 2rem;">
+                        <label class="block font-medium text-sm text-gray-700" for="email" style="color: #05083b; font-weight: 900; font-size: 1rem;">
                             Email
                         </label>
 
@@ -193,7 +193,7 @@ background-image: url('dashboardcss/img/survey.jpg');
 
                     <!-- Password -->
                     <div class="mt-4">
-                        <label class="block font-medium text-sm text-gray-700" for="password" style="color: #ffffff; font-weight: 900; font-size: 2rem;">
+                        <label class="block font-medium text-sm text-gray-700" for="password" style="color: #05083b; font-weight: 900; font-size: 1rem;">
                             Password
                         </label>
 
@@ -202,7 +202,7 @@ background-image: url('dashboardcss/img/survey.jpg');
 
                     <!-- Confirm Password -->
                     <div class="mt-4">
-                        <label class="block font-medium text-sm text-gray-700" for="password_confirmation" style="color: #ffffff; font-weight: 900; font-size: 2rem;">
+                        <label class="block font-medium text-sm text-gray-700" for="password_confirmation" style="color: #05083b; font-weight: 900; font-size: 1rem;">
                             Confirm Password
                         </label>
 
@@ -210,11 +210,11 @@ background-image: url('dashboardcss/img/survey.jpg');
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="http://127.0.0.1:8000/login" style="color: #ffffff; font-weight: 900; font-size: 2rem;">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="http://127.0.0.1:8000/login" style="color: #05083b; font-weight: 900; font-size: 0.65rem;">
                             Already registered?
                         </a>
 
-                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 btn btn-lg " style="font-weight: 900; font-size: 2rem; border-radius:15px; ">
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 btn btn-lg " style="font-weight: 900; font-size: 1rem; border-radius:15px; ">
                             Register
                         </button>
                     </div>

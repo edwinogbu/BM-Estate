@@ -42,7 +42,7 @@
   padding: 0.625rem 0;
   font-size: 1rem;
   color: #fff;
-  letter-spacing: 0.062rem;
+  letter-spacing: 0.061rem;
   margin-bottom: 1.875rem;
   border: none;
   border-bottom: 0.065rem solid #fff;
@@ -77,7 +77,7 @@
   background-color: #03a9f4;
   padding: 0.625rem 1.25rem;
   cursor: pointer;
-  border-radius: 0.312rem;
+  border-radius: 0.311rem;
   font-size: 1rem;
 }
 
@@ -123,25 +123,25 @@
 
 <style>
     body{
-        background-image: url('dashboardcss/img/survey1.jpg');
-			background-repeat:no-repeat;
+        /* background-image: url('dashboardcss/img/survey1.jpg'); */
+			/* background-repeat:no-repeat;
             background-size:cover;
             height: 100%;
-            overflow: hidden;
+            overflow: hidden; */
 
-        padding-top: 15%;
+        /* padding-top: 15%;
         margin: 10%;
         margin-top: 80px;
        padding-top: 50px;
       max-height: 100%;
       max-width: 100%;
-      object-fit: cover;
+      object-fit: cover; */
 
-      background-position: center center;
+      /* background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: #464646;
+    background-color: #464646; */
     /* Font Colour */
     color:white;
     }
@@ -220,27 +220,27 @@
 
 <style>
     body{
-        background-image: url('dashboardcss/img/survey1.jpg');
+        /* background-image: url('dashboardcss/img/survey1.jpg');
 			background-repeat:no-repeat;
             background-size:cover;
             height: 100%;
-            overflow: hidden;
+            overflow: hidden; */
 
         padding-top: 15%;
         margin: 10%;
         margin-top: 80px;
        padding-top: 50px;
-      max-height: 100%;
+      /* max-height: 100%;
       max-width: 100%;
-      object-fit: cover;
+      object-fit: cover; */
 
-      background-position: center center;
+      /* background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: #464646;
+    background-color: #464646; */
     /* Font Colour */
-    color:white;
+    /* color:white; */
     }
 </style>
 
@@ -271,7 +271,7 @@
         <div class=" flex flex-col sm:justify-center items-center pt-6 sm:pt-5 bg-gray-100"  id="image_id" style="color: #05083b;
 
 /* background-image: url('dashboardcss/img/bm consult logo.jpg'); */
-background-image: url('dashboardcss/img/survey2.jpg');
+/* background-image: url('dashboardcss/img/survey2.jpg');
 			background-repeat:no-repeat;
             background-size:cover;
             margin:100px;
@@ -279,34 +279,24 @@ background-image: url('dashboardcss/img/survey2.jpg');
             width:1080px;
             object-fit: cover;
             max-width: 100%;
-            height: auto;
+            height: auto; */
         ">
 
             <div class="row " style="margin: 40px; padding:10px;">
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg pull-right" style="margin-left: 20px; margin: 20px;
-
-
-background-image: url('dashboardcss/img/survey.jpg');
-			background-repeat:no-repeat;
-            background-size:cover;
-            /* margin:100px; */
-            /* width:1080px; */
-            object-fit: cover;
-            max-width: 100%;
-            height: auto;
             ">
                  <!-- Validation Errors -->
 
 
                 @if ($errors->any())
                 <div class="error">
-                    <div class="font-medium text-red-600" style="font-size: 2rem; font-weight: 600;">
+                    <div class="font-medium text-red-600" style="font-size: 1rem; font-weight: 600;">
                         {{ __('Whoops! Something went wrong.') }}
                     </div>
 
                     <ul class="mt-3 list-disc list-inside text-sm text-red-600">
                         @foreach ($errors->all() as $error)
-                            <li style="font-weight: 900; font-size: 2rem;">{{ $error }}</li>
+                            <li style="font-weight: 900; font-size: 1rem;">{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -318,7 +308,7 @@ background-image: url('dashboardcss/img/survey.jpg');
                     <!-- Email Address -->
                     <!--color:05083b-->
                     <div class="mt-4">
-                        <label class="block font-medium text-sm text-gray-700" for="email" style="color: #ffffff; font-weight: 900; font-size: 2rem;">
+                        <label class="block font-medium text-sm text-gray-700" for="email" style="color: #05083b; font-weight: 900; font-size: 1rem;">
                             Email
                         </label>
 
@@ -327,7 +317,7 @@ background-image: url('dashboardcss/img/survey.jpg');
 
                     <!-- Password -->
                     <div class="mt-4">
-                        <label class="block font-medium text-sm text-gray-700" for="password" style="color: #ffffff; font-weight: 900; font-size: 2rem;">
+                        <label class="block font-medium text-sm text-gray-700" for="password" style="color: #05083b; font-weight: 900; font-size: 1rem;">
                             Password
                         </label>
 
@@ -340,18 +330,18 @@ background-image: url('dashboardcss/img/survey.jpg');
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember" style="transform: scale(1.5); padding: 10px;">
-                    <span class="ml-2 text-sm text-gray-600" style="font-weight: 900; font-size: 1.5rem; border-radius:15px; color:#ffffff;">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-gray-600" style="font-weight: 900; font-size: 1.5rem; border-radius:15px; color:#05083b;">{{ __('Remember me') }}</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}" style="font-weight: 900; font-size: 1.5rem; border-radius:15px; color:#ffffff;">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}" style="font-weight: 900; font-size: 1.5rem; border-radius:15px; color:#05083b;">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
 
-                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 btn btn-lg " style="font-weight: 900; font-size: 2rem; border-radius:15px;color:#ffffff;">
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-4 btn btn-lg " style="font-weight: 900; font-size: 1rem; border-radius:15px;color:#ffffff;">
                             Login
                         </button>
                     </div>

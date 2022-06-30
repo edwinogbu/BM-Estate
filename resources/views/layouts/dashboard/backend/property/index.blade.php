@@ -82,16 +82,14 @@
                                                 </td>
 
                                                 <td class="pull-right">
-                                                    <div class="butto-group">
+                                                    <form action="{{ route('property.destroy', $property) }}">
+                                                        <div class="butto-group">
+                                                            <a href="{{ route('property.edit', $property->id) }}" type="button" class="btn btn-sm btn-primary">Edit</a>
+                                                            <button type="submit" class="btn btn-sm btn-primary" >Delete</button>
+                                                        </div>
+                                                    </form>
 
-                                                        <a href="" class="btn btn-info btn-xs">
-                                                            <i class="pl-2 fa fa-edit">Edit</i>
-                                                        </a>
 
-                                                        <a href="" class="btn btn-danger btn-xs">
-                                                            <i class="pl-2 fa fa-trash">Delete</i>
-                                                        </a>
-                                                    </div>
                                                     </td>
                                             </tr>
 

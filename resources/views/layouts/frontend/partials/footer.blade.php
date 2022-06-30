@@ -9,27 +9,50 @@
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a" style="color: #05083b;">
-               there write up coming soon here
+                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                    CORPORATE HEAD OFFICE
+                </span>
+                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                    13, Aina Street
+                </span><br>
+                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                    Off Ogunnusi Road
+                </span><br>
+                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                    By Zenith Bank,
+                </span><br>
+                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                    Ojodu Berger, Lagos
+                </span><br>
+                <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
+                    Tel: 08052689259,<br> 08122737186,<br> 08093819070(WhatsApp)
+                </span><br>
+                <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
+                    E-mail: bmconsultingrealestate@yahoo.com
+                </span><br>
+                <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
+                    bmhomevestors@gmail.com
+                </span>
               </p>
             </div>
             <div class="w-footer-a">
-                @forelse ($contact as $contact)
+                {{-- @forelse ($contact as $contact) --}}
                 <ul class="list-unstyled">
                   <li class="color-a">
                       <span class="color-text-a" style="color: #05083b;">{{ __('Email') }} .
                       </span>
 
-                      {{ $contact->email }}
+                      {{-- {{ $contact->email }} --}}
                   </li>
                   <li class="color-a">
                       <span class="color-text-a" style="color: #05083b;">{{ __('Phone') }} .
-                      </span> {{ $contact->phone }}
+                      {{-- </span> {{ $contact->phone }} --}}
                   </li>
                 </ul>
 
-                @empty
+                {{-- @empty
                     Contact will be uploaded soon
-                @endforelse
+                @endforelse --}}
             </div>
           </div>
         </div>

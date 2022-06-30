@@ -52,34 +52,39 @@
                                                 <th>{{ __('Email') }}</th>
                                                 <th>{{ __('About Agent') }}</th>
                                                 <th>{{ __('Picture') }}</th>
-                                                <th class="pull-right">Action</th>
+                                                <th class="" width="20%">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($agents as $agent)
                                             <tr>
-                                                <th scope="row">1</th>
+                                                <th scope="row">{{ ++$loop->index }}</th>
                                                 <td>{{ $agent->full_name }}</td>
                                                 <td>{{ $agent->phone }}</td>
                                                 <td>{{ $agent->email }}</td>
-                                                <td>{{ $agent->email }}</td>
-                                                <td>{{ $agent->email }}</td>
+                                                <td>{{ $agent->about }}</td>
+                                                <td>
 
-                                                <td class="pull-right">
-                                                    <div class="butto-group">
+                                                    <img src="{{ Storage::url($agent->image) }}" alt="" style="width: 50px; height: ;50px; border-radius:50px;">
+                                                </td>
 
-                                                        <a href="{{ route('agent.edit', $agent->id) }}" class="btn btn-info btn-xs">
+                                                <td class="">
+
+                                                    <form action="{{ route('agent.destroy', $agent->id) }}">
+                                                        <a href="{{ route('agent.show', $agent->id) }}" class="btn btn-info btn-xs"><i class="pl-2 fa fa-eye">Show</i></a>
+                                                        <button type="submit" class="btn btn-sm btn-danger" >Delete</button>
+                                                    </form>
+                                                    {{-- <div class="butto-group"> --}}
+
+                                                        {{-- <a href="{{ route('agent.edit', $agent->id) }}" class="btn btn-info btn-xs">
                                                             <i class="pl-2 fa fa-edit">Edit</i>
-                                                        </a>
-                                                        <a href="{{ route('agent.show', $agent->id) }}" class="btn btn-info btn-xs">
-                                                            <i class="pl-2 fa fa-edit">Show</i>
-                                                        </a>
-
+                                                        </a> --}}
+{{--
                                                         <a href="{{ route('agent.destroy', $agent->id) }}" class="btn btn-danger btn-xs">
                                                             <i class="pl-2 fa fa-trash">Delete</i>
-                                                        </a>
-                                                    </div>
-                                                    </td>
+                                                        </a> --}}
+                                                    {{-- </div> --}}
+                                                </td>
                                             </tr>
 
                                             @endforeach
