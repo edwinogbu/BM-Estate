@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
 use App\Models\Service;
+use App\Models\Team;
 
 class AboutController extends Controller
 {
@@ -34,6 +35,7 @@ class AboutController extends Controller
         $properties = Property::all();
         $contact = Contact::all();
         $services = Service::all();
+        $teams =Team::all();
 
 
         $types = DB::table('properties')->select('type')->distinct()->get()->pluck('type')->sort();
@@ -51,7 +53,7 @@ class AboutController extends Controller
         if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
 
-    return view('about', compact('agents','about','agent','properties','cities','beds', 'baths', 'garages','types','searchProperty','contact','services'));
+    return view('about', compact('agents','about','teams','agent','properties','cities','beds', 'baths', 'garages','types','searchProperty','contact','services'));
 
     }
 

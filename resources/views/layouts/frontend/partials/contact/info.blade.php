@@ -24,7 +24,14 @@
       </div>
       <div class="col-sm-12 section-t8">
         <div class="row">
-          <div class="col-md-7">
+            <div class="card-body">
+                @if(Session::has('success'))
+                <div class="alert alert-success">
+                {{ Session::get('success') }}
+                </div>
+                @endif
+            </div>
+          <div class="col-md-6">
             <form class="form-a contactForm" action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
               <div id="sendmessage">Your message has been sent. Thank you!</div>
@@ -32,28 +39,53 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <div class="form-group">
-                    <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                    <div class="validation"></div>
+                    <input type="text" class="form-control form-control-lg form-control-a @error('name') is-invalid @enderror" placeholder="Name" name="name">
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <div class="form-group">
-                    <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
-                    <div class="validation"></div>
+                    <input type="email" class="form-control form-control-lg form-control-a @error('email') is-invalid @enderror" placeholder="Your Email" name="email">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-lg form-control-a @error('phone') is-invalid @enderror" placeholder="Phone Number" name="phone">
+                    @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-md-12 mb-3">
                   <div class="form-group">
-                    <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject') }}">
-                    @if ($errors->has('subject'))
-                        <span class="text-danger">{{ $errors->first('subject') }}</span>
-                    @endif
+                    <input type="text" class="form-control @error('subject') is-invalid @enderror" placeholder="Subject" name="subject">
+                    @error('subject')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-md-12 mb-3">
                   <div class="form-group">
-                    <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                    <div class="validation"></div>
+                    <textarea class="form-control form-control-lg form-control-a textarea @error('message') is-invalid @enderror" placeholder="Message" name="message"></textarea>
+                    @error('message')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -62,22 +94,27 @@
               </div>
             </form>
           </div>
-          <div class="col-md-5 section-md-t3">
+          <div class="col-md-4 section-md-t3" style="margin-left: 40px;">
             <div class="icon-box section-b2">
               <div class="icon-box-icon">
                 <span class="ion-ios-paper-plane"></span>
               </div>
               <div class="icon-box-content table-cell">
                 <div class="icon-box-title">
-                  <h4 class="icon-title">{{ __('Say Hello') }}</h4>
+                  <h4 class="icon-title">{{ __('Call Us Now') }}</h4>
                 </div>
                 {{-- @if(count($contact)) --}}
                 <div class="icon-box-content">
-                  <p class="mb-1">{{ __('Email') }}.
-                    {{-- <span class="color-a">{{ $contact[0]->email }}</span> --}}
-                  </p>
+
                   <p class="mb-1">{{ __('Phone') }}.
-                    {{-- <span class="color-a">{{ $contact[0]->phone }}</span> --}}
+                    <span class="color-a">
+                        Tel: 08052689259, 08122737186, 08093819070(WhatsApp)
+                    </span>
+                  </p>
+                  <p class="mb-1">{{ __('Email') }}.
+                    <span class="color-a">
+                        E-mail: bmconsultingrealestate@yahoo.com
+                    </span>
                   </p>
                 </div>
                 {{-- @endif --}}
@@ -94,7 +131,21 @@
                 <div class="icon-box-content">
                   {{-- @if(count($contact)) --}}
                   <p class="mb-1">
-                    {{-- {{ $contact[0]->city.','.$contact[0]->street_name.' '.$contact[0]->house_number }} --}}
+                    <SPan>
+                        CORPORATE HEAD OFFICE
+                    </span>
+                    <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                        13, Aina Street
+                    </span><br>
+                    <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                        Off Ogunnusi Road
+                    </span><br>
+                    <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                        By Zenith Bank,
+                    </span><br>
+                    <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                        Ojodu Berger, Lagos
+                    </span><br>
                   </p>
                   {{-- @endif --}}
                 </div>

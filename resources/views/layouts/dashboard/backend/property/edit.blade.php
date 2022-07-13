@@ -56,7 +56,7 @@
                                </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input  value="{{ $product->city }}" name="city" type="text" placeholder="city name" class="form-control">
+                            <input  value="{{ $property->city }}" name="city" type="text" placeholder="city name" class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -66,7 +66,7 @@
                                </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->street_name }}" type="text" name="street_name" placeholder="street_name." class="form-control">
+                            <input value="{{ $property->street_name }}" type="text" name="street_name" placeholder="street_name." class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -76,7 +76,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->house_number }}" name="house_number" type="number" placeholder="house number" class="form-control">
+                            <input value="{{ $property->house_number }}" name="house_number" type="number" placeholder="house number" class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -86,7 +86,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->price }}" name="price" type="number" placeholder="price" class="form-control">
+                            <input value="{{ $property->price }}" name="price" type="number" placeholder="price" class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -97,7 +97,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->area }}" name="area" type="number" placeholder="Area" class="form-control">
+                            <input value="{{ $property->area }}" name="area" type="number" placeholder="Area" class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -107,7 +107,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->beds }}" name="beds" type="number" placeholder="beds" class="form-control">
+                            <input value="{{ $property->beds }}" name="beds" type="number" placeholder="beds" class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -117,7 +117,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->baths }}" name="baths" type="number" placeholder="baths" class="form-control">
+                            <input value="{{ $property->baths }}" name="baths" type="number" placeholder="baths" class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -127,7 +127,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->garage }}" name="garage" type="number" placeholder="Number" class="form-control">
+                            <input value="{{ $property->garage }}" name="garage" type="number" placeholder="Number" class="form-control">
                         </div>
                      </div>
                      <div class="form-group row">
@@ -137,7 +137,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->rent }}" name="rent" type="number" placeholder="rent" class="form-control">
+                            <input value="{{ $property->rent }}" name="rent" type="number" placeholder="rent" class="form-control">
                         </div>
                      </div>
 
@@ -151,13 +151,13 @@
                                 <label class="custom-control custom-checkbox">
                                     <input
 
-                                    name="status" type="radio" data-parsley-multiple="groups" value="1 {{ $product->status }}" data-parsley-mincheck="2" data-parsley-errors-container="#error-container1" class="custom-control-input">
+                                    name="status" type="radio" data-parsley-multiple="groups" value="1 {{ $property->status }}" data-parsley-mincheck="2" data-parsley-errors-container="#error-container1" class="custom-control-input">
                                     <span class="custom-control-label">Active</span>
                                 </label>
                                 <label class="custom-control custom-checkbox">
                                     <input
 
-                                    name="status" type="radio" data-parsley-multiple="groups" value="0 {{ $product->status }}" data-parsley-mincheck="2" data-parsley-errors-container="#error-container1" class="custom-control-input">
+                                    name="status" type="radio" data-parsley-multiple="groups" value="0 {{ $property->status }}" data-parsley-mincheck="2" data-parsley-errors-container="#error-container1" class="custom-control-input">
                                     <span class="custom-control-label">Sold</span>
                                 </label>
                               {{-- @endforeach --}}
@@ -172,7 +172,7 @@
                                  </h6>
                                </label>
                          <div class="col-12 col-sm-8 col-lg-6">
-                            <input value="{{ $product->type }}" name="type" type="text" placeholder="Property Type" class="form-control">
+                            <input value="{{ $property->type }}" name="type" type="text" placeholder="Property Type" class="form-control">
                         </div>
                      </div>
 
@@ -206,7 +206,7 @@
                                    </h6>
                         </label>
                         <div class="col-12 col-sm-8 col-lg-6">
-                             <textarea name="about" class="form-control" cols="4"  placeholder="about property description">{{ $product->about }}</textarea>
+                             <textarea name="about" class="form-control" cols="4"  placeholder="about property description">{{ $property->about }}</textarea>
                         </div>
                      </div>
                      <div class="row inputWrapper ">
@@ -250,18 +250,42 @@
                                 Value:
                             </div>
                         </div>
+                        {{-- @foreach ($properties as $property) --}}
+
                         @for ($i=0; $i <= 4; $i++)
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <input type="text" name="properties[{{ $i }}][key]" class="form-control"
-                                      value="{{ $product->properties[$i]['key'] ?? '' }}">
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="text" name="properties[{{ $i }}][value]" class="form-control"
-                                      value="{{ $product->properties[$i]['value'] ?? '' }}">
-                                </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="text" name="amenities[{{ $i }}][key]" class="form-control"
+                                value="{{ $property->amenities[$i]['key'] ?? '' }}">
                             </div>
+                            <div class="col-md-4">
+                                <input type="text" name="amenities[{{ $i }}][value]" value="" class="form-control"
+                                value="{{ $property->amenities[$i]['value'] ?? '' }}">
+                            </div>
+                        </div>
                         @endfor
+                        {{-- @endforeach --}}
+                        @if ($property->amenities)
+                         {{-- @foreach ($property->amenities as $property) --}}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input type="text" name="amenities" class="form-control"
+                                value="{{ $property['key'] }}">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" name="amenities" value="" class="form-control"
+                                value="{{ $property['value'] }}">
+                            </div>
+                        </div>
+                        {{-- @endforeach --}}
+                        @endif
+
+
+                                                  {{-- @if ($property->amenities)
+                                                    @foreach ($property->amenities as $property)
+                                                    <b>{{ $property['key'] }}</b>: {{ $property['value'] }}<br />
+                                                    @endforeach
+                                                    @endif --}}
                     </div>
 
 

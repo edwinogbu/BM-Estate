@@ -54,7 +54,7 @@
                 </p>
               </div>
               <div class="testimonial-author-box">
-                <img src="{{ Storage::url($testimonial->testimonial_image) }}" alt="" class="h-100 img-responsive testimonial-avatar">
+                <img src="{{ Storage::url($testimonial->testimonial_image) }}" alt="" class="img-responsive testimonial-avatar">
 
                 <h5 class="testimonial-author">
                     {{ $testimonial->names }}

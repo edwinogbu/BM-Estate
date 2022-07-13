@@ -49,6 +49,7 @@
                     enctype="multipart/form-data"
                     action="{{ route('services.update', $service->id) }}">
                     @csrf
+                    @method('put')
                     <div class="row inputWrapper ">
 
                     <div class="form-group row">

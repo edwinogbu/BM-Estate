@@ -67,7 +67,7 @@
                                                 </td>
                                                 <td>
 
-                                                    <form action="{{ route('services.destroy', $service->id) }}" method="POST">
+                                                    <form action="{{ route('services.destroy', $service->id) }}" method="POST" enctype="">
                                                         @csrf
 
                                                         @method('DELETE')

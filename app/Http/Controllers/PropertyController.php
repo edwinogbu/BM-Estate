@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
 use App\Models\Agent;
 use App\Models\Amenity;
 use App\Models\Contact;
@@ -20,14 +21,13 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Property $property,Agent $agent)
+    public function index()
     {
         $agents =Agent::all();
-        $amenities = Amenity::all();
         $properties = Property::all();
         // $properties = Property::latest()->with(['agent'])->paginate(3);
 
-        return view('layouts.dashboard.backend.property.index', compact('agents', 'properties','agent', 'agents','amenities'));
+        return view('layouts.dashboard.backend.property.index', compact('agents', 'properties', 'agents'));
     }
 
     public function search(Request $request, Property $property)
@@ -76,12 +76,16 @@ class PropertyController extends Controller
     public function frontendHome(Agent $agent, Request $request, Testimonial $testimonial, Contact $contact, Service $service)
     {
         // dd('ok');
+        $teams = Team::all();
+
+        // dd($teams);
         $agents = Agent::paginate(3);
         $testimonials = Testimonial::all();
         $properties = Property::latest()->with(['agent'])->paginate(3);
         $contact = Contact::all();
         $services = Service::all();
-        $featuredServices = Service::where('title', 'Accommodation Solution')->orWhere('title', 'Land Acquisition, Perfection of Title and Asset Disposal')->get();
+        $featuredServices = Service::where('title', 'Accommodation Solution')->orWhere('title', 'Land Acquisition, Perfection of Title and Asset Disposal')
+        ->orWhere('title','valuation')->get();
 
 
 // dd($featuredServices);
@@ -101,7 +105,7 @@ class PropertyController extends Controller
             if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
 
-        return view('welcome', compact('services','service','agents','testimonials','testimonial', 'properties','agent','cities','beds', 'baths', 'garages','types','searchProperty', 'contact', 'featuredServices'));
+        return view('welcome', compact('teams','services','service','agents','testimonials','testimonial', 'properties','agent','cities','beds', 'baths', 'garages','types','searchProperty', 'contact', 'featuredServices'));
     }
 
     public function SingleAgentProperty(Request $request, Agent $agent, Property $property)
@@ -140,6 +144,7 @@ class PropertyController extends Controller
     {
 
         $properties      = Property::latest()->simplePaginate(6);
+        $agents      = Agent::latest()->simplePaginate(6);
         $contact = Contact::all();
         $services = Service::all();
 
@@ -173,7 +178,7 @@ class PropertyController extends Controller
 
                 // dd($selected_status);
 
-        return view('properties',compact('agent', 'properties', 'selected_status', 'contact','services'));
+        return view('properties',compact('agent','agents', 'properties', 'selected_status', 'contact','services'));
     }
 
 
@@ -344,9 +349,10 @@ class PropertyController extends Controller
     {
         $property = Property::findOrFail($property->id);
         $properties = Property::all();
+        $agents = Agent::all();
 
 
-        return view('layouts.dashboard.backend.property.edit', compact('property','properties'));
+        return view('layouts.dashboard.backend.property.edit', compact('property','properties','agents'));
     }
 
     /**
@@ -360,8 +366,32 @@ class PropertyController extends Controller
     {
 
         $property = Property::findOrFail($property->id);
+        if ($request->hasFile('picture')) {
+            $request->validate([
 
-        $property->update($request->all());
+                'picture'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+            $path1 = $request->file('vertical_image')->store('public/vertical_image');
+            $path2 = $request->file('horizontal_images')->store('public/horizontal_images');
+            $property->picture=$path1;
+            $property->picture=$path2;
+        }
+
+            $property->city   = $request->city ;
+            $property->street_name   = $request->street_name ;
+            $property->house_number   = $request-> house_number;
+            $property->price   = $request->price ;
+            $property->area   = $request->area ;
+            $property->beds   = $request->beds ;
+            $property->baths   = $request->baths ;
+            $property->garage   = $request->garage ;
+            $property->rent   = $request-> rent;
+            $property->status   = $request-> status;
+            $property->type   = $request-> type;
+            $property->agent_id   = $request-> agent_id;
+            $property->about   = $request-> about;
+            $property->amenities   = $request-> amenities;
+            $property->save();
 
         return back();
     }
@@ -374,6 +404,7 @@ class PropertyController extends Controller
      */
     public function destroy(Property $property)
     {
+        dd($property);
         $property = Property::findOrFail($property->id);
         $property->delete();
 

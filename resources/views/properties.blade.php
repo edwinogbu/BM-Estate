@@ -7,5 +7,7 @@
 
   @include('layouts.frontend.partials.properties.title')
   @include('layouts.frontend.partials.properties.property_grid')
+  @include('layouts.frontend.partials.agents')
+
 
 @stop

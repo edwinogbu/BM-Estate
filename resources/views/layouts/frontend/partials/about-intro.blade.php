@@ -1,21 +1,26 @@
 <!--/ Intro Single star /-->
-<section class="intro-single" style="margin-top: 50px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-lg-8">
-        <div class="title-single-box">
-          <h1 class="title-single" style="margin-top: 50px;">
+<section class="intro-single m-0 p-0" style="margin: 0px;">
+  <div class="container" style="margin: 0px;">
+    <div class="row" style="margin: 0px;">
+      <div class="col-md-12 col-lg-12" style="margin: 0px;">
+        <div class="title-single-box" style="margin: 0px;">
+            <div class="title-box">
             @foreach ($about as $about)
 
                 @if($about)
-                    {{ $about->title }}
+                <div class="section-header" style="margin-top: 0px">
+
+                    <h2>
+                        {{ $about->title }}
+                    </h2>
+                </div>
                 @endif
 
             @endforeach
-          </h1>
+            </div>
         </div>
       </div>
-      <div class="col-md-12 col-lg-4">
+      <div class="col-md-12 col-lg-12">
         <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">

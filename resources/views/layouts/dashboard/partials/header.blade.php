@@ -194,7 +194,7 @@
                                         </a>
                                         <ul aria-expanded="true" class="collapse">
                                             <li>
-                                                <a href="#" >Change Password</a>
+                                                <a href="{{ route('password.view') }}" >Change Password</a>
                                             </li>
                                             <li>
                                                 <a href="#" >Manage User</a>
@@ -347,15 +347,19 @@
                                         </li>
                                         <li>
                                             <a href="#" aria-expanded="true">
-                                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                                                <span class="sidebar-nav-item">Amenityies</span>
+                                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                                <span class="sidebar-nav-item">Team Member</span>
                                                 <span class="fa arrow"></span>
                                             </a>
                                             <ul aria-expanded="false" class="collapse">
                                                 <li>
-
-                                                    <a href="#">
-                                                  Add Amenity
+                                                    <a href="{{ route('team.create') }}">
+                                                  Add Team Member
+                                                </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('team.index') }}">
+                                                  Manage Team Member
                                                 </a>
                                                 </li>
 

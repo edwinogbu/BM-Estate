@@ -26,8 +26,12 @@ class MbServiceController extends Controller
     {
         $properties = Property::paginate(5);
         $services = Service::all();
+        $featuredServices = Service::where('title', 'Accommodation Solution')->orWhere('title', 'Land Acquisition, Perfection of Title and Asset Disposal')
+        ->orWhere('title','valuation')->get();
 
-        return view('surveyor', compact('properties','services'));
+
+
+        return view('surveyor', compact('properties','services','featuredServices'));
     }
 
     /**

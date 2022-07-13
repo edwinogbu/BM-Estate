@@ -1,14 +1,19 @@
 <?php
 
-use App\Models\Agent;
+use App\Models\Team;
 
+use App\Models\User;
+use App\Models\Agent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AddAgentController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PropertyController;
@@ -25,7 +30,7 @@ use App\Http\Controllers\DeletePropertyController;
 use App\Http\Controllers\UpdatePropertyController;
 use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\DashboardPropertyController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +48,9 @@ use App\Http\Controllers\ServiceController;
 // });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $teams =Team::where('id', Auth::id())->get();
+    $user =User::all();
+    return view('dashboard', compact('teams', 'user'));
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -59,6 +66,12 @@ require __DIR__.'/auth.php';
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+ // CHANGE PASSWORD
+ Route::get('/password/view', [RegisteredUserController::class, 'PasswordView'])->name('password.view');
+
+ Route::post('/password/update', [RegisteredUserController::class, 'PasswordUpdate'])->name('password.update');
+
 
 
 Route::get('add-agent', [AgentController::class, 'index'])->name('agent.index');
@@ -94,9 +107,19 @@ Route::get('add-about', [AboutController::class, 'index'])->name('about.index');
 Route::get('create-about', [AboutController::class, 'create'])->name('about.create');
 Route::get('show-about/{about}', [AboutController::class, 'show'])->name('about.show');
 Route::post('store-about', [AboutController::class, 'store'])->name('about.store');
-Route::get('edit-about/', [AboutController::class, 'edit'])->name('about.edit');
+Route::get('edit-about/{about}', [AboutController::class, 'edit'])->name('about.edit');
 Route::put('update-about/{about}', [AboutController::class, 'update'])->name('about.update');
 Route::delete('delete-about/{about}', [AboutController::class, 'destroy'])->name('about.destroy');
+
+
+
+Route::get('add-team', [TeamController::class, 'index'])->name('team.index');
+Route::get('create-team', [TeamController::class, 'create'])->name('team.create');
+Route::get('show-team-member-details/{team}', [TeamController::class, 'show'])->name('team.show');
+Route::post('store-team', [TeamController::class, 'store'])->name('team.store');
+Route::get('edit-team/{team}', [TeamController::class, 'edit'])->name('team.edit');
+Route::put('update-team-member-info/{team}', [TeamController::class, 'update'])->name('team.update');
+Route::delete('delete-team-member-info/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
 
 
 
@@ -144,6 +167,7 @@ Route::delete('delete-about/{contact}', [ContactController::class, 'destroy'])->
 Route::get('single-agent-details/{agent}', [AgentController::class, 'singleAgent'])->name('agent.view.single-detail');
 Route::get('logout', [AgentController::class, 'logout'])->name('logout');
 Route::get('about', [AboutController::class, 'about'])->name('about');
+Route::get('team-member-detail/{team}', [TeamController::class, 'TeamMember'])->name('team-member.detail');
 Route::get('surveyor', [MbServiceController::class, 'surveyor'])->name('surveyor');
 Route::post('surveyor-form', [MbServiceController::class, 'form'])->name('surveyor.form.store');
 Route::get('contact', [ContactController::class, 'contact'])->name('contact');

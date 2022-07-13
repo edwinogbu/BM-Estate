@@ -112,9 +112,20 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        $service = $service->update($request->all());
+        if ($request->hasFile('icon')) {
+            $request->validate([
 
-        return redirect()->back()->with('success', 'services updated successfully');
+                'icon'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+            $path = $request->file('icon')->store('public/service_image');
+
+            $service->icon   = $path;
+        }
+        $service->title   = $request->title ;
+        $service->text   = $request->text ;
+        $service->save();
+
+        return redirect()->route('services.index')->with('success', 'services updated successfully');
 
     }
 

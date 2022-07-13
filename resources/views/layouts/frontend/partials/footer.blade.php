@@ -2,57 +2,76 @@
 <section class="section-footer">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-4">
+
+        <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand" style="color: #05083b;">BM Consulting</h3>
+              <h3 class="w-title-a text-brand" style="color: #05083b;">{{ __('BM Consulting') }}</h3>
             </div>
             <div class="w-body-a">
-              <p class="w-text-a color-text-a" style="color: #05083b;">
-                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
-                    CORPORATE HEAD OFFICE
-                </span>
-                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
-                    13, Aina Street
-                </span><br>
-                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
-                    Off Ogunnusi Road
-                </span><br>
-                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
-                    By Zenith Bank,
-                </span><br>
-                <span class="color-text-a" style="color: #05083b; font-weight: 600;">
-                    Ojodu Berger, Lagos
-                </span><br>
-                <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
-                    Tel: 08052689259,<br> 08122737186,<br> 08093819070(WhatsApp)
-                </span><br>
-                <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
-                    E-mail: bmconsultingrealestate@yahoo.com
-                </span><br>
-                <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
-                    bmhomevestors@gmail.com
-                </span>
-              </p>
-            </div>
-            <div class="w-footer-a">
-                {{-- @forelse ($contact as $contact) --}}
+              <div class="w-body-a">
                 <ul class="list-unstyled">
-                  <li class="color-a">
-                      <span class="color-text-a" style="color: #05083b;">{{ __('Email') }} .
-                      </span>
 
-                      {{-- {{ $contact->email }} --}}
+                  <li class="item-list-a" >
+                    <i class="fa fa-angle-right"></i>
+                    <SPan>
+                        CORPORATE HEAD OFFICE
+                    </span>
+                    <p style="margin: 0px; padding-left: 20px;">
+                        <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                            13, Aina Street
+                        </span><br>
+                        <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                            Off Ogunnusi Road
+                        </span><br>
+                        <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                            By Zenith Bank,
+                        </span><br>
+                        <span class="color-text-a" style="color: #05083b; font-weight: 600;">
+                            Ojodu Berger, Lagos
+                        </span><br>
                   </li>
-                  <li class="color-a">
-                      <span class="color-text-a" style="color: #05083b;">{{ __('Phone') }} .
-                      {{-- </span> {{ $contact->phone }} --}}
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i>
+                    <SPan>
+                        Tel:
+                    </span>
+                    <p style="margin: 0px; padding-left: 20px;">
+                    <a href="{{ route('contact') }}" style="color: #05083b;">
+                        <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
+                            Tel: 08052689259, 08122737186, 08093819070(WhatsApp)
+                        </span><br>
+                    </a>
+                    </p>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i>
+                    <SPan>
+                        E-mail:
+                    </span>
+                    <p style="margin: 0px; padding-left: 20px;">
+                    <a href="{{ route('contact') }}" style="color: #05083b;">
+                        <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
+                            bmconsultingrealestate@yahoo.com
+                        </span><br>
+                    </a>
+                    </p>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i>
+                    <SPan>
+                        Website:
+                    </span>
+                    <p style="margin: 0px; padding-left: 20px;">
+                    <a href="{{ route('contact') }}" style="color: #05083b;">
+                        <span class="color-text-a"  style="color: #05083b; font-weight: 600;">
+                            bmhomevestors@gmail.com
+                        </span><br>
+                    </a>
+                    </p>
                   </li>
                 </ul>
-
-                {{-- @empty
-                    Contact will be uploaded soon
-                @endforelse --}}
+              </div>
             </div>
           </div>
         </div>
@@ -68,14 +87,27 @@
                     <i class="fa fa-angle-right"></i> <a href="/login" style="color: #05083b;">Admin</a>
                   </li>
                   <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i> <a href="{{ route('about') }}" style="color: #05083b;">{{ __('About') }}</a>
+                  </li>
+                  <li class="item-list-a">
                     <i class="fa fa-angle-right"></i>
-                    <a href="{{ route('welcome') }}/agents">
-                      {{ __('Agents') }}
+                    <a href="{{ route('services') }}">
+                      {{ __('Services') }}
                     </a>
                   </li>
                   <li class="item-list-a">
-                    <i class="fa fa-angle-right"></i> <a href="{{ route('about') }}" style="color: #05083b;">{{ __('About') }}</a>
+                    <i class="fa fa-angle-right"></i>
+                    <a href="{{ route('property.view.all-property-listing') }}">
+                      {{ __('Property') }}
+                    </a>
                   </li>
+                  <li class="item-list-a">
+                    <i class="fa fa-angle-right"></i>
+                    <a href="{{ route('agent.view-agent-list') }}">
+                      {{ __('Agents') }}
+                    </a>
+                  </li>
+
                 </ul>
               </div>
             </div>
@@ -90,13 +122,13 @@
               <ul class="list-unstyled">
                 <li class="item-list-a">
                   <i class="fa fa-angle-right"></i>
-                  <a href="{{ route('surveyor') }}/agents">
+                  <a href="{{ route('surveyor') }}">
                     {{ __('Service Proposal') }}
                   </a>
                 </li>
                 <li class="item-list-a">
                   <i class="fa fa-angle-right"></i>
-                  <a href="{{ route('contact') }}/agents">
+                  <a href="{{ route('contact') }}">
                     {{ __('Contact Us') }}
                   </a>
                 </li>
@@ -193,3 +225,16 @@
   <!-- Template Main Javascript File -->
   <script src="{{ asset('frontend/js/main.js')}}"></script>
   <script src="{{ asset('frontend/js/app.js')}}"></script>
+
+
+
+   <!-- Vendor JS Files -->
+ <script src="{{ asset('serviceCss/assets/vendor/aos/aos.js')}}"></script>
+ <script src="{{ asset('serviceCss/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+ <script src="{{ asset('serviceCss/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+ <script src="{{ asset('serviceCss/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+ <script src="{{ asset('serviceCss/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+ <script src="{{ asset('serviceCss/assets/vendor/php-email-form/validate.js')}}"></script>
+
+ <!-- Template Main JS File -->
+<script src="{{ asset('serviceCss/assets/js/main.js')}}"></script>

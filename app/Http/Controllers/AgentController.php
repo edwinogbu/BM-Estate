@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreAgentRequest;
 use App\Http\Requests\UpdateAgentRequest;
+use App\Models\Service;
 
 class AgentController extends Controller
 {
@@ -30,7 +31,8 @@ class AgentController extends Controller
         $agents = Agent::latest()->simplePaginate(2);
         $properties = Property::all();
         // $contact = Contact::all();
-        return view('agents', compact('properties','agents'));
+        $service = Service::all();
+        return view('agents', compact('properties','agents', 'service'));
     }
 
     /**
@@ -88,6 +90,7 @@ class AgentController extends Controller
     {
         $agent      = Agent::find($agent->id);
         $properties = Property::all();
+        $service = Service::all();
 
         $types = DB::table('properties')->select('type')->distinct()->get()->pluck('type')->sort();
         $cities = DB::table('properties')->select('city')->distinct()->get()->pluck('city')->sort();
@@ -103,7 +106,7 @@ class AgentController extends Controller
         if($request->filled('garage')){$searchProperty->where('garage', $request->garage);}
         if($request->filled('baths')){$searchProperty->where('baths', $request->baths);}
 
-        return view('single-agent', compact("agent","properties", 'cities','beds', 'baths', 'garages','types','searchProperty'));
+        return view('single-agent', compact("agent","properties", 'cities','beds', 'baths', 'garages','types','searchProperty', 'service'));
     }
 
 
@@ -113,8 +116,10 @@ class AgentController extends Controller
         // $contact    = $this->contactRepository->all();
         $agent      = Agent::find($agent->id);
         $properties = Property::all();
+        $service = Service::all();
 
-        return view('single-agent', compact('agent','properties'));
+
+        return view('single-agent', compact('agent','properties','service'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -147,7 +152,8 @@ class AgentController extends Controller
      */
     public function destroy(Agent $agent)
     {
-        //
+        $agent->delete();
+        return redirect()->back()->with('success', 'deleted successfully');
     }
 
 

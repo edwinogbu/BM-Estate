@@ -76,21 +76,26 @@
                                                     {{ $property->agent->phone }}
                                                 </td>
                                                 <td>
+                                                    {{-- @if ($property->amenities)
                                                     @foreach ($property->amenities as $property)
                                                     <b>{{ $property['key'] }}</b>: {{ $property['value'] }}<br />
                                                     @endforeach
+                                                    @endif --}}
                                                 </td>
 
                                                 <td class="pull-right">
-                                                    <form action="{{ route('property.destroy', $property) }}">
-                                                        <div class="butto-group">
-                                                            <a href="{{ route('property.edit', $property->id) }}" type="button" class="btn btn-sm btn-primary">Edit</a>
-                                                            <button type="submit" class="btn btn-sm btn-primary" >Delete</button>
-                                                        </div>
+                                                    {{-- @foreach ($properties as $property) --}}
+
+
+                                                    <form action="{{ route('property.destroy', $property->id) }}" method="POST" enctype="">
+                                                        @csrf
+
+                                                        @method('DELETE')
+                                                        <a href="{{ route('property.edit', $property->id) }}" type="button" class="btn btn-sm btn-info">Edit</a>
+                                                        <button type="submit" class="btn btn-sm btn-danger" >Delete</button>
                                                     </form>
-
-
-                                                    </td>
+                                                    {{-- @endforeach --}}
+                                                </td>
                                             </tr>
 
                                             @endforeach

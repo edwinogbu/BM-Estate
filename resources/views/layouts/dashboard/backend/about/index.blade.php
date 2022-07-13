@@ -72,7 +72,8 @@
                                                 </td>
                                                 <td>
 
-                                                    <form action="{{ route('about.destroy', $about->id) }}">
+                                                    <form action="{{ route('about.destroy', $about->id) }}" action="post">
+                                                        @method('DELETE')
                                                         <a href="{{ route('about.edit', $about->id) }}" type="button" class="btn btn-sm btn-primary">Edit</a>
                                                         <button type="submit" class="btn btn-sm btn-primary" >Delete</button>
                                                     </form>
